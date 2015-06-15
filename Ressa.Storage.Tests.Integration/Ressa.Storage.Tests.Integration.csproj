@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4FAAE987-7C15-49A4-9F56-02008975F54A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ressa.Storage.Tests.Integration</RootNamespace>
+    <AssemblyName>Ressa.Storage.Tests.Integration</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AWSSDK">
+      <HintPath>..\libraries\AWS SDK for .NET\AWSSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Configuration">
+      <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.1.8.0.0\lib\net35-full\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage">
+      <HintPath>..\packages\WindowsAzure.Storage.3.2.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="Nuane.SftpLite">
+      <HintPath>..\libraries\Nuane.SftpLite\Nuane.SftpLite.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.5.9.10348\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Rhino.Mocks">
+      <HintPath>..\packages\RhinoMocks.3.6\lib\Rhino.Mocks.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AmazonS3\AmazonS3FacadeFixture.cs" />
+    <Compile Include="Azure\AzureFacadeFixture.cs" />
+    <Compile Include="Azure\When_calling_AzureBucketManipulator.cs" />
+    <Compile Include="Azure\When_check_file_exist.cs" />
+    <Compile Include="Azure\When_copy_file.cs" />
+    <Compile Include="Azure\When_copy_file_integration.cs" />
+    <Compile Include="Azure\When_delete_file.cs" />
+    <Compile Include="Azure\When_getting_file_details.cs" />
+    <Compile Include="Azure\When_get_list_of_files.cs" />
+    <Compile Include="Azure\When_get_preview_url.cs" />
+    <Compile Include="Azure\When_get_upload_url.cs" />
+    <Compile Include="Azure\When_get_url.cs" />
+    <Compile Include="Azure\When_retrieving_list_of_files_in_bucket.cs" />
+    <Compile Include="Azure\When_uploading_a_file.cs" />
+    <Compile Include="Azure\When_upload_file_from_bytes.cs" />
+    <Compile Include="Azure\When_upload_file_from_stream.cs" />
+    <Compile Include="BigData.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AmazonS3\When_upload_file_from_stream.cs" />
+    <Compile Include="Sftp\ClientFixtureBase.cs" />
+    <Compile Include="Sftp\When_copy_file_to_sftp.cs" />
+    <Compile Include="Sftp\When_working_with_directories.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ressa.Storage.AmazonS3\Ressa.Storage.AmazonS3.csproj">
+      <Project>{2e5aef57-cb2c-4d5b-9836-3c8c1c5875cc}</Project>
+      <Name>Ressa.Storage.AmazonS3</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ressa.Storage.Azure\Ressa.Storage.Azure.csproj">
+      <Project>{5c8f1ba0-521a-4f8d-8390-6e27788af2d6}</Project>
+      <Name>Ressa.Storage.Azure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ressa.Storage.Sftp\Ressa.Storage.Sftp.csproj">
+      <Project>{83b394b2-6b57-40b9-a350-94b319951bb5}</Project>
+      <Name>Ressa.Storage.Sftp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ressa.Storage.Tests\Ressa.Storage.Tests.csproj">
+      <Project>{8ed85cb4-5ba4-42e6-8e29-f3ad7ff80f65}</Project>
+      <Name>Ressa.Storage.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ressa.Storage\Ressa.Storage.csproj">
+      <Project>{b1bf82fe-ccc9-4374-b9a9-3b083fd8f6cd}</Project>
+      <Name>Ressa.Storage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ressa.Testing\Ressa.Testing.csproj">
+      <Project>{c62e8216-162b-46ad-afd9-bb6be6239d6c}</Project>
+      <Name>Ressa.Testing</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Sftp\TestFile.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
